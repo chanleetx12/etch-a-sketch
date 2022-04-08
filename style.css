@@ -1,0 +1,58 @@
+html{
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.header{
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+}
+
+button{
+    margin: 10px;
+    border: 1px solid lightgray;
+    border-radius: 12px;
+    width: 100px;
+    box-sizing: border-box;
+}
+
+button:active{
+    transform: translateY(1.5px);
+}
+
+.selected{
+    border: 1px solid grey;
+    background-color: lightgrey;
+    box-sizing: border-box;
+}
+
+.footer{
+    margin: 20px;
+}
+
+.board{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+    border: 1px solid lightgrey;
+}
+
+.box{
+    display: flex;
+    flex: 1 1 1;
+}
+
+.draw{
+    background-color: black;
+}
