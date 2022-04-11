@@ -2,6 +2,19 @@
 const defaultValue = 16;
 let activePen = 'black';
 
+
+
+// Identify page
+const body = document.querySelector('body');
+// body.addEventListener('mouseover', (event)=>{
+//     if (!event.target.className){
+//         console.log(event.target.nodeName);
+//     }else{
+//         console.log(event.target.className);
+//     }
+    
+// })
+
 // Identify board
 const board = document.querySelector('.board');
 
@@ -39,6 +52,8 @@ function createBoard(matrixValue) {
     }
 };
 
+createBoard(defaultValue);
+
 // Select active button
 function selectedPen(){
     if (activePen === 'black') {
@@ -58,7 +73,7 @@ function selectedPen(){
 
 // Draw function
 function draw(event) {
-    if (mousedown && event.target.classList[0] === 'box') {
+    if (mousedown && event.target.className === 'box') {
         if (activePen === 'black') {
             event.target.style.backgroundColor = drawBlack();
         } else if (activePen === 'color') {
@@ -87,23 +102,33 @@ function eraser() {
 }
 
 function resetAll() {
-    const boxes = document.querySelectorAll('.box');
     boxes.forEach(box => box.style.backgroundColor = '');
-    activePen = 'black'
-    selectedPen();
 };
+
+// Identify boxes
+const boxes = document.querySelectorAll('.box');
 
 // Draw on mousedown and mouse movement at target element
 var mousedown = false;
-board.addEventListener('mousedown', (event) => {
-    mousedown = true;
-    draw(event);
-})
-board.addEventListener('mouseup', () => {
+body.addEventListener('mouseup', ()=>{
     mousedown = false;
 })
-board.addEventListener('mouseover', (event) => {
+board.addEventListener('mouseup', ()=>{
+    mousedown = false;
+})
+boxes.forEach(box => addEventListener('mousedown', (event)=>{
+    mousedown = true;
     draw(event);
-});
+}))
+boxes.forEach(box => box.addEventListener('mouseup', ()=>{
+    mousedown = false;
+}))
+boxes.forEach(box => box.addEventListener('mouseover', (event)=>{
+    if (mousedown){
+        draw(event);
+    } else{
+        return;
+    }
+}))
 
-createBoard(defaultValue);
+

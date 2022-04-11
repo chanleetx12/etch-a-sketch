@@ -43,14 +43,16 @@ button:active{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 500px;
-    height: 500px;
+    width: 40%;
+    aspect-ratio: auto 1/1;
     border: 1px solid lightgrey;
 }
+
 
 .box{
     display: flex;
     flex: 1 1 1;
+    width: 100%;
 }
 
 .draw{
